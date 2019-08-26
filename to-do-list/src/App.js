@@ -3,6 +3,7 @@ import './App.css';
 import TodoList from './TodoList';
 
 class App extends Component{
+  inputElement = React.createRef()
   constructor(){
     super()
     this.state ={
@@ -14,13 +15,19 @@ class App extends Component{
   handleInput = e => {
     console.log("Hello Input")
   }
-  addItem = () => {
-    console.log("Hello Add item")
+  addItem = e => {
+    e.preventDefault()
+    console.log('Hello World')
   }
   render(){
   return (
     <div className="App">
-      <TodoList addItem={this.addItem}/>
+      <TodoList 
+          addItem={this.addItem}
+          inputElement={this.inputElement}
+          handleInput={this.handleInput}
+          currentItem={this.state.currentItem}
+          />
     </div>  
     );
   }
